@@ -12,7 +12,7 @@ const ToDoList = (props) => {
   return <div className = "Status-Container"><h1> {props.heading}</h1>
   {props.heading === 'To do' ? 
     <div> 
-      <input ref={this.inputRef} placeholder="Type your to do here"/><button onClick={() => this.addItem()} className = "AddItem"> Add item </button> 
+      <input ref={props.refx} placeholder="Type your to do here"/><button onClick={() => props.addItem()} className = "AddItem"> Add item </button> 
     </div>: ''
   }
   {props.todos.map((todo) => {
@@ -57,7 +57,6 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <div className="App">
         <header className="App-header">
@@ -65,9 +64,9 @@ class App extends Component {
           <h1 className="App-title">Welcome to Nello (The Nona - Trello)</h1>
         </header>
         <div className = "Content">
-          <ToDoList todos = {this.state.todos} heading = "To do" />
-          <ToDoList todos = {this.state.todos} heading = "In progress"  />
-          <ToDoList todos = {this.state.todos} heading = "Done"  />
+          <ToDoList todos = {this.state.todos} heading = "To do" addItem = {this.addItem} refx = {this.inputRef}/>
+          <ToDoList todos = {this.state.todos} heading = "In progress"  addItem = {this.addItem} refx = {this.inputRef}/>
+          <ToDoList todos = {this.state.todos} heading = "Done" addItem = {this.addItem} refx = {this.inputRef}/>
         </div>
       </div>
     )
