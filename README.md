@@ -9,12 +9,11 @@ https://goo.gl/forms/JQHR40fvkY9NnWuy2
 # Additional Resources 
 
 **Create React App**
-Create React apps with no build configuration.
-Terminal Command: npx create-react-app my-app
+Super easy way to set up a new react project
 https://github.com/facebook/create-react-app
 
 **Great React Articles/Resources**
-Best article I've found:
+Best article I've found so far:
 http://blog.thefirehoseproject.com/posts/reactjs-101/
 
 **React Docs**
@@ -22,7 +21,9 @@ Awesome Documentation - has almost everything you need
 https://reactjs.org/docs/hello-world.html
 
 **CSS Flex Game**
+Play this pretty fun game and learn to make your site look and feel beautiful
 https://flexboxfroggy.com/
 
 **CSS Grid Game**
+Learn the essentail skills and give your site the beauty treatment it always deserved
 https://cssgridgarden.com/
