@@ -25,5 +25,5 @@ Play this pretty fun game and learn to make your site look and feel beautiful
 https://flexboxfroggy.com/
 
 **CSS Grid Game**
-Learn the essentail skills and give your site the beauty treatment it always deserved
+Learn about this essentail css tool and give your site the beauty treatment it always deserved
 https://cssgridgarden.com/
