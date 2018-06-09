@@ -6,8 +6,8 @@ const ToDoItem = (props) => {
   return <div className = "ToDoItem" >
           <p> {props.todo.todo}</p>
           <div className = "Buttons">
-            <button onClick={(event) => this.deleteItem(props.todo.id)} className = "Delete"> Delete </button>
-            {props.todo.status === 'Done' ? '' : <button onClick={(event)=>this.moveItem(props.todo.id, props.todo.status)} className = "Next"> Next </button>}
+            <button onClick={(event) => props.itemMethods.deleteItem(props.todo.id)} className = "Delete"> Delete </button>
+            {props.todo.status === 'Done' ? '' : <button onClick={(event)=>props.itemMethods.moveItem(props.todo.id, props.todo.status)} className = "Next"> Next </button>}
           </div>
       </div> 
 }
@@ -16,12 +16,13 @@ const ToDoList = (props) => {
   return <div className = "Status-Container"><h1> {props.heading}</h1>
   {props.heading === 'To do' ? 
     <div> 
-      <input ref={props.refx} placeholder="Type your to do here"/><button onClick={() => props.addItem()} className = "AddItem"> Add item </button> 
+      <input ref={props.refx} placeholder="Type your to do here"/><button onClick={() => props.itemMethods.addItem()} className = "AddItem"> Add item </button> 
     </div>: ''
   }
   {props.todos.map((todo) => {
     return props.heading === todo.status ? <ToDoItem
     key = {todo.id}
+    itemMethods = {props.itemMethods}
     todo = {todo}  
     /> : ''
   })}</div>
@@ -82,6 +83,12 @@ class App extends Component {
     this.setState({todos: todos})
   }
 
+  itemMethods = {
+    moveItem: this.moveItem,
+    addItem: this.addItem,
+    deleteItem: this.deleteItem
+  }
+
   render() {
     return (
       <div className="App">
@@ -90,9 +97,9 @@ class App extends Component {
           <h1 className="App-title">Welcome to Nello (The Nona - Trello)</h1>
         </header>
         <div className = "Content">
-          <ToDoList todos = {this.state.todos} heading = "To do" refx = {this.inputRef} addItem={this.addItem}/>
-          <ToDoList todos = {this.state.todos} heading = "In progress" refx = {this.inputRef} addItem={this.addItem} />
-          <ToDoList todos = {this.state.todos} heading = "Done" refx = {this.inputRef} addItem={this.addItem}  />
+          <ToDoList todos = {this.state.todos} heading = "To do" refx = {this.inputRef} itemMethods={this.itemMethods}/>
+          <ToDoList todos = {this.state.todos} heading = "In progress" refx = {this.inputRef} itemMethods={this.itemMethods} />
+          <ToDoList todos = {this.state.todos} heading = "Done" refx = {this.inputRef} itemMethods={this.itemMethods}  />
         </div>
       </div>
     )
