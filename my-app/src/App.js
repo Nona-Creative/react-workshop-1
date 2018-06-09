@@ -2,6 +2,27 @@ import React, { Component } from 'react'
 import logo from './nona_logo.svg'
 import './App.css'
 
+const ToDoItem = (props) => {
+  return <div className = "ToDoItem" >
+          <p> {props.todo.todo}</p>
+      </div> 
+}
+
+const ToDoList = (props) => {
+  return <div className = "Status-Container"><h1> {props.heading}</h1>
+  {props.heading === 'To do' ? 
+    <div> 
+      <input ref={this.inputRef} placeholder="Type your to do here"/><button onClick={() => this.addItem()} className = "AddItem"> Add item </button> 
+    </div>: ''
+  }
+  {props.todos.map((todo) => {
+    return props.heading === todo.status ? <ToDoItem
+    key = {todo.id}
+    todo = {todo}  
+    /> : ''
+  })}</div>
+}
+
 class App extends Component {
   constructor(props){
     super(props)
@@ -21,14 +42,6 @@ class App extends Component {
     let text = event.target.value
     this.setState({inputValue: text})
   }
-
-  deleteItem = (id) => {
-    let todos = [...this.state.todos]
-    todos = todos.filter(todo => {
-      return todo.id !== id
-    })
-    this.setState({todos: todos})
-  }
   
   generateUniqueId = () => {
     return Math.random().toString(36).substr(2, 9)
@@ -43,45 +56,7 @@ class App extends Component {
     this.setState({todos: todos})
   }
 
-  moveItem = (id, status) => {
-    let todos = [...this.state.todos]
-    let desiredIndex = todos.findIndex(todo => todo.id === id)
-    switch (status) {
-      case 'To do':
-        todos[desiredIndex].status = 'In progress'
-      break
-      case 'In progress':
-        todos[desiredIndex].status = 'Done'
-      break
-    }
-    this.setState({todos: todos})
-  }
-
   render() {
-    const ToDoItem = (props) => {
-      return <div className = "ToDoItem" >
-              <p> {props.todo.todo}</p>
-              <div className = "Buttons">
-                <button onClick={(event) => this.deleteItem(props.todo.id)} className = "Delete"> Delete </button>
-                {props.todo.status === 'Done' ? '' : <button onClick={(event)=>this.moveItem(props.todo.id, props.todo.status)} className = "Next"> Next </button>}
-              </div>
-          </div> 
-  }
-
-  const ToDoList = (props) => {
-    return <div className = "Status-Container"><h1> {props.heading}</h1>
-    {props.heading === 'To do' ? 
-      <div> 
-        <input ref={this.inputRef} placeholder="Type your to do here"/><button onClick={() => this.addItem()} className = "AddItem"> Add item </button> 
-      </div>: ''
-    }
-    {props.todos.map((todo) => {
-      return props.heading === todo.status ? <ToDoItem
-      key = {todo.id}
-      todo = {todo}  
-      /> : ''
-    })}</div>
-}
 
     return (
       <div className="App">
