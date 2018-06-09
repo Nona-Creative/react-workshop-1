@@ -13,8 +13,21 @@ const ToDoItem = (props) => {
 }
 
 class App extends Component {
+// State is initialised once in the constructor using this.state = {...}. If state is changed later setState must be used
+// We set state to an array of todo elements
+  constructor(props){
+    super(props)
+    this.state = {
+      todos: [
+        {id : '1', todo : 'Learn React'},
+        {id : '2', todo : 'Learn Redux'},
+        {id : '3', todo : 'Learn CSS Flex'}
+        // id isn't used in the step but fear not it will be in the next one #HakunaMatata
+      ]
+    }
+  }
+
   render() {
-    
     return (
       <div className="App">
         <header className="App-header">
@@ -22,11 +35,13 @@ class App extends Component {
           <h1 className="App-title">Welcome to Nello (The Nona - Trello)</h1>
         </header>
         <div className = "Content">
-        {/* Calling the react component to replicate itself 3 times */}
-        {/* The props.todo in each instance of the component is sent to the given string */}
-          <ToDoItem todo = 'Learn React'/>
-          <ToDoItem todo = 'Learn CSS Flex'/>
-          <ToDoItem todo = 'Learn Redux'/>
+        {/* select element i from the state array */}
+        {/* This may seem verbose... because it is... 
+            we need some sort of loop...
+            but which one? The plot thickens (although the code should become thinner) */}
+          <ToDoItem todo = {this.state.todos[0].todo}/>
+          <ToDoItem todo = {this.state.todos[1].todo}/>
+          <ToDoItem todo = {this.state.todos[2].todo}/>
         </div>
       </div>
     );
