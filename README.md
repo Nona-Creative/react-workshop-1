@@ -8,21 +8,21 @@ https://goo.gl/forms/JQHR40fvkY9NnWuy2
 
 # # Additional Resources # #
 
-# Create React App
+**Create React App**
 Create React apps with no build configuration.
 Terminal Command: npx create-react-app my-app
 https://github.com/facebook/create-react-app
 
-# Great React Articles/Resources
+**Great React Articles/Resources**
 Best article I've found:
 http://blog.thefirehoseproject.com/posts/reactjs-101/
 
-# React Docs
+**React Docs**
 Awesome Documentation - has almost everything you need 
 https://reactjs.org/docs/hello-world.html
 
-# CSS Flex Game
+**CSS Flex Game**
 https://flexboxfroggy.com/
 
-# CSS Grid Game 
+**CSS Grid Game**
 https://cssgridgarden.com/
